@@ -24,17 +24,26 @@
           <div class="text-xs text-gray-500">M.D, DNB(DVL)</div>
         </div>
       </div>
-      <nav class="hidden md:flex items-center space-x-6 text-sm">
+      <nav id="navLinks" class="hidden md:flex items-center space-x-6 text-sm">
         <a href="#conditions" class="hover:text-teal-700">Conditions</a>
         <a href="#how" class="hover:text-teal-700">How it works</a>
+        <a href="results.html" class="hover:text-teal-700">Results</a>
         <a href="#about" class="hover:text-teal-700">About</a>
         <a href="#contact" class="hover:text-teal-700">Contact</a>
       </nav>
       <div class="flex items-center space-x-2">
+        <button id="menuBtn" class="md:hidden text-2xl pr-2">☰</button>
         <a id="callTop" class="px-3 py-2 rounded-2xl bg-teal-600 text-white text-sm" href="#">Call</a>
         <a id="waTop" class="px-3 py-2 rounded-2xl bg-green-50 text-green-900 border border-green-200 text-sm" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
       </div>
     </div>
+    <nav id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 text-sm border-t border-gray-200 py-2">
+      <a href="#conditions" class="hover:text-teal-700">Conditions</a>
+      <a href="#how" class="hover:text-teal-700">How it works</a>
+      <a href="results.html" class="hover:text-teal-700">Results</a>
+      <a href="#about" class="hover:text-teal-700">About</a>
+      <a href="#contact" class="hover:text-teal-700">Contact</a>
+    </nav>
   </header>
 
   <!-- HERO -->
@@ -169,6 +178,12 @@
 
     ["waTop","waHero","waCTA","waQuick","waBottom"].forEach(id=>setHref(id, WA));
     ["callTop","callHero","callQuick","callBottom"].forEach(setTel);
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
